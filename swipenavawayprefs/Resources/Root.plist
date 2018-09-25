@@ -72,16 +72,6 @@
 			<key>icon</key>
 			<string>tweet.png</string>
 		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>label</key>
-			<string>support me</string>
-			<key>action</key>
-			<string>donatem</string>
-			<key>icon</key>
-			<string>paypal.png</string>
-		</dict>
 	</array>
 	<key>title</key>
 	<string>NavAway</string>
