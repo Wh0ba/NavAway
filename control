@@ -1,7 +1,7 @@
 Package: com.wh0ba.swipenavaway
 Name: NavAway
 Depends: mobilesubstrate, applist
-Version: 1.2
+Version: 1.2.1
 Architecture: iphoneos-arm
 Description: hides the navigation bar when swiping inside scroll views. configure enabled apps using the settings
 Maintainer: Wh0ba<whappfanr@yahoo.com>

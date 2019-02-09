@@ -49,10 +49,5 @@
 	}
 }
 
-- (void)donatem {
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.paypal.me/wh0ba"]];
-}
-
-
 
 @end

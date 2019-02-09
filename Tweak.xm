@@ -11,7 +11,7 @@
 
 static BOOL statusHide = YES;
 //static BOOL isSettings = NO;
-
+static BOOL swipetoback = NO;
 
 
 @interface UINavigationController (GestureRe) <UIGestureRecognizerDelegate>
@@ -41,7 +41,8 @@ static BOOL statusHide = YES;
 	
 	self.interactivePopGestureRecognizer.delegate = self;
 	
-	//self.interactivePopGestureRecognizer.tagg = getag;
+	
+	
 	
 	return self;
 	
@@ -50,10 +51,11 @@ static BOOL statusHide = YES;
 	
 		%orig;
 	
-	
 	//toolbarhid = [self isToolbarHidden];
 	self.hidesBarsOnSwipe = YES;
+	
 	self.interactivePopGestureRecognizer.delegate = self;
+	
 	
 	return self;
 	
@@ -64,8 +66,13 @@ static BOOL statusHide = YES;
 	
 	%orig;
 	
+	
 	self.hidesBarsOnSwipe = YES;
+	
+	
+	
 	self.interactivePopGestureRecognizer.delegate = self;
+	
 	
 	
 	return self;
@@ -78,12 +85,15 @@ static BOOL statusHide = YES;
 	
 	%orig;
 	
+	
+	
 	[self setNavigationBarHidden:NO animated:NO];
-	//HBLogDebug(@"push view controller");
+	//NSLogDebug(@"push view controller");
 	
 	[self hideSbar:NO];
 	
 	self.hidesBarsOnSwipe = YES;
+	
 	
 	self.interactivePopGestureRecognizer.delegate = self;
 	
@@ -95,13 +105,17 @@ static BOOL statusHide = YES;
 
 -(void)setNavigationBarHidden:(BOOL)hide  animated:(BOOL)anim {
 	%orig;
-	//HBLogDebug(@"setNavHidden:%@",hide? @"yes":@"no");
+	//NSLogDebug(@"setNavHidden:%@",hide? @"yes":@"no");
 	if (statusHide) {
 		[self hideSbar:hide];
 	}else {
 		[self hideSbar:NO];
 	}
-	self.interactivePopGestureRecognizer.delegate = self;
+	NSLog(@"(hide)Title :%@", self.title);
+	
+	if (swipetoback) {
+		self.interactivePopGestureRecognizer.delegate = self;
+	}
 	
 }
 
@@ -113,9 +127,10 @@ static BOOL statusHide = YES;
 
 %new
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gR {
-
 	return YES;
 }
+
+
 
 %new
 - (void)hideSbar:(BOOL)shouldHide {
